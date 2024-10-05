@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Light/Dark Mode Toggle -->
+    <header class="header">
+        <div class="container">
+            <nav>
+                <ul class="nav-menu">
+                    <!-- Theme Switch with Icons -->
+                    <div class="theme-switch-wrapper">
+                        <!-- Sun and Moon icons for light and dark mode -->
+                        <i class='bx bx-sun' id="light-icon" style="cursor: pointer;"></i>
+                        <i class='bx bx-moon' id="dark-icon" style="cursor: pointer;"></i>
+                    </div>
+                    <li><a href="#home" class="nav__link" id="nav-home">Home</a></li>
+                    <li><a href="#about" class="nav__link" id="nav-about">About</a></li>
+                    <li><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
+                    <li><a href="#portfolio" class="nav__link" id="nav-portfolio">Works</a></li>
+                    <li><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
+                    
+                </ul>   
+                            
+            </nav>
+           
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="container home-container">
+            <div class="homeplusimage">
+                <div class="home-content">
+                    <h1>Hi, I'm <span class="highlight">Ajay J</span>, a ML Developer</h1>
+                    <p>Architecting tomorrow's intelligence: ML solutions that drive innovation</p>
+                    <a href="#contact" class="btn-primary">Contact Me</a>    
+                </div>
+                <div class="home-img">
+                    <img src="profile_img.jpg" alt="Profile Picture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p> I'm a determined go-getter with a strong work ethic. You can count on me to get things done.
+                    I care deeply about others and approach tasks with sensitivity. As a natural leader, I excel at bringing teams together.
+                    While ambitious, I balance drive with empathy. I'm the dependable friend who'll work tirelessly on a project, but also remember your birthday.
+                    My mix of ambition and compassion means I push for results while ensuring everyone feels valued. Need a motivated teammate who'll have your back? That's me in a nutshell. 
+                </p>
+            </div>
+            <br>
+            <!-- GitHub Contributions Section -->
+            <h3>My GitHub Contributions</h3>
+            <div class="github-contributions">
+                <!-- Replace 'your-username' with your actual GitHub username -->
+                <img src="https://ghchart.rshah.org/AjayJ07-git" alt="GitHub Contributions Graph">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-content">
+                <div class="skill-item">
+                    <h3>C</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <h3>C++</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Python</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Html</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <h3>CSS</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Microsoft Office</h3>
+                    <p>Intermediate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Works</h2>
+            <div class="portfolio-content">
+                <div class="portfolio-item">
+                    <h3>Quantum AI Model</h3>
+                    <p>Project features a Jupyter Notebook, `QuantumAiModel.ipynb`, that explores the integration of quantum computing with artificial intelligence. The notebook provides a comprehensive guide to setting up the environment, understanding quantum computing fundamentals, and implementing a quantum AI model. It includes detailed steps for data preparation.<a href="https://github.com/AjayJ07-git/QuantumModel" style="text-decoration: none;" target="_blank">▶️</a></p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>YOLOv5 Image Object Detection </h3>
+                    <p>This project implements a YOLOv5-based image object detection model using a Jupyter Notebook. It provides a step-by-step guide to setting up the environment, preparing data, building and training the model, and analyzing results. The project aims to demonstrate the effectiveness of YOLOv5 in detecting objects in images efficiently.<a href="https://github.com/AjayJ07-git/YoloV5ObjectDetection" style="text-decoration: none;" target="_blank">▶️</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Details</h2>
+            <div class="contact-details">
+                <p><a href="https://github.com/AjayJ07-git" target="_blank"><i class='bx bxl-github' style="font-size: 200%;"></i></a></p> <!-- Replace with your actual GitHub username -->
+                <p><a href="https://www.linkedin.com/in/ajay-j-b1387031a/" target="_blank"><i class='bx bxl-linkedin' style="font-size: 200%;"></i></a></p> <!-- Replace with your actual LinkedIn profile -->
+                <p><a href="mailto:ajay.jofficial3@gmail.com"><i class='bx bxs-envelope' style="font-size: 200%;"></i></a></p> <!-- Replace with your actual email -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <p>&copy; 2024 Ajay J. All rights reserved.</p>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
