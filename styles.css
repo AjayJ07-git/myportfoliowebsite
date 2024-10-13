@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
@@ -60,13 +61,11 @@ body [data-theme="dark"] {
     color: var(--text-color);
     font-weight: 500;
     font-size: 14px;
-    padding: 5px 10px;
     position: relative;
     transition: color 0.3s ease;
 }
 
 .nav__link.active {
-    border-bottom: 2px solid var(--primary-color);
     color: var(--primary-color); /* Or any other color for active link */
 }
 
@@ -84,6 +83,143 @@ body [data-theme="dark"] {
 
 .nav__link.active::before {
     transform: scaleX(1); /* Show underline for active link */
+}
+
+/* Style for the dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none; /* Hide the dropdown menu by default */
+    position: absolute;
+    background-color: var(--bg-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 0;
+    list-style: none;
+}
+
+.dropdown-menu li {
+    text-align: left;
+}
+
+.dropdown-menu li a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show the dropdown when hovered */
+}
+
+/* Adjust z-index to make sure dropdown doesn't overlap with other sections */
+.header {
+    z-index: 1000;
+}
+
+/* Timeline container */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.timeline-item.left {
+    justify-content: flex-start;
+    text-align: right;
+}
+
+.timeline-item.right {
+    justify-content: flex-end;
+    text-align: left;
+}
+
+/* Timeline vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary-color);
+    transform: translateX(-50%);
+}
+
+.timeline-content {
+    background-color: var(--bg-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    opacity: 0; /* Start invisible */
+    transform: translateY(50px); /* Start out of view */
+}
+
+.timeline-content {
+    opacity: 0; /* Start invisible */
+    transform: translateY(50px); /* Start out of view */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.timeline-item.left .timeline-content {
+    text-align: right;
+}
+
+.timeline-item.right .timeline-content {
+    text-align: left;
+}
+
+.timeline-item.visible .timeline-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Timeline dot */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Other styles (unchanged) */
@@ -134,15 +270,61 @@ body [data-theme="dark"] {
 }
 
 
+/* Button primary styling */
+.btn-contact {
+    background-color: var(--primary-color);
+}
+
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 20px 25px;
+    padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
-    width: 150px;
-    height: 65px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Ensure the animation effect stays within button bounds */
 }
+
+/* Animation effect for light mode */
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(255, 255, 255, 0.2); /* Light ripple effect */
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 50%;
+}
+
+/* Button hover effect */
+.btn-primary:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn-primary:hover {
+    background-color: #666; /* Change the background color on hover */
+    transform: translateY(-3px); /* Lift the button slightly on hover */
+}
+
+/* Button focus effect */
+.btn-primary:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Custom focus effect */
+}
+
+/* Responsive button size */
+@media screen and (max-width: 768px) {
+    .btn-primary {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
 
 /* Skills Section */
 .skills {
@@ -180,6 +362,14 @@ body [data-theme="dark"] {
     color: #666; /* Level text color */
 }
 
+/* Skill Icon */
+.skill-icon {
+    width: 50px; /* Adjust size of the icon */
+    height: 50px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
 /* Contact Section */
 .contact {
     padding: 60px 20px; /* Add padding */
@@ -213,6 +403,29 @@ body [data-theme="dark"] {
 
 .portfolio-item:hover {
     transform: scale(1.01);
+}
+
+/* Education, Experience, Certificates Section */
+.education, .experience, .certificates {
+    padding: 60px 0;
+}
+
+.education-content, .experience-content, .certificates-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.education-item, .experience-item, .certificate-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.education-item:hover, .experience-item:hover, .certificate-item:hover {
+    transform: scale(1.05);
 }
 
 .footer {
@@ -256,4 +469,23 @@ body [data-theme="dark"] {
 [data-theme="dark"] #dark-icon {
     opacity: 1;
     transform: scale(1); /* Normal size */
+}
+
+/* Dark mode support */
+[data-theme="dark"] .btn-primary {
+    background-color: #444; /* Dark background */
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background-color: #666; /* Slightly lighter on hover in dark mode */
+}
+
+/* Adjust the ripple effect in dark mode */
+[data-theme="light"] .btn-primary::before {
+    background-color: rgba(0, 123, 255, 0.5); /* Lighter ripple in dark mode */
+}
+
+/* Adjust the ripple effect in dark mode */
+[data-theme="dark"] .btn-primary::before {
+    background-color: rgba(0, 123, 255, 0.5); /* Lighter ripple in dark mode */
 }

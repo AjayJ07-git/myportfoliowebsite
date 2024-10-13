@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Ajay J</title>
+    <link rel="icon" href="avataaars.png" type="image/png"> <!-- Optional: for PNG format -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    
     <!-- Header with Light/Dark Mode Toggle -->
     <header class="header">
         <div class="container">
@@ -26,7 +28,14 @@
                     <li><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
                     <li><a href="#portfolio" class="nav__link" id="nav-portfolio">Works</a></li>
                     <li><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
-                    
+                    <!-- Dropdown for More -->
+                    <li class="dropdown">
+                        <p style="font-size: 30px;">≡</p>
+                        <ul class="dropdown-menu">
+                            <li><a href="#education" class="nav__link">Education</a></li>
+                            <li><a href="#experience" class="nav__link">Experience</a></li>
+                        </ul>
+                    </li>
                 </ul>   
                             
             </nav>
@@ -39,9 +48,12 @@
         <div class="container home-container">
             <div class="homeplusimage">
                 <div class="home-content">
-                    <h1>Hi, I'm <span class="highlight">Ajay J</span>, a ML Developer</h1>
-                    <p>Architecting tomorrow's intelligence: ML solutions that drive innovation</p>
-                    <a href="#contact" class="btn-primary">Contact Me</a>    
+                    <h1>Hi, I'm <span class="highlight">Ajay J</span></h1>
+                    <h1>a <span id="changing-role">ML Developer</span></h1>
+                    <p>Weaving Intelligence Into The Web: Where AI Meets Modern Development</p>
+                    <div>
+                        <a href="#contact" class="btn-primary">Contact Me</a>  
+                    </div>
                 </div>
                 <div class="home-img">
                     <img src="profile_img.jpg" alt="Profile Picture">
@@ -62,6 +74,9 @@
                 </p>
             </div>
             <br>
+            <a href="AjayJ_Linkedin_Resume.pdf" class="btn-primary" download>Download Resume</a>
+            <br>
+            <br>     
             <!-- GitHub Contributions Section -->
             <h3>My GitHub Contributions</h3>
             <div class="github-contributions">
@@ -77,32 +92,49 @@
             <h2 class="section-title">Skills</h2>
             <div class="skills-content">
                 <div class="skill-item">
-                    <h3>C</h3>
-                    <p>Intermediate</p>
+                    <img src="icons/c++.png" alt="C++ Icon" class="skill-icon">
+                    <p>C++</p>
                 </div>
                 <div class="skill-item">
-                    <h3>C++</h3>
-                    <p>Intermediate</p>
+                    <img src="icons/python.png" alt="Python Icon" class="skill-icon">
+                    <p>Python</p>
                 </div>
                 <div class="skill-item">
-                    <h3>Python</h3>
-                    <p>Intermediate</p>
+                    <img src="icons/html.png" alt="HTML Icon" class="skill-icon">
+                    <p>HTML</p>
                 </div>
                 <div class="skill-item">
-                    <h3>Html</h3>
-                    <p>Intermediate</p>
+                    <img src="icons/css.png" alt="CSS Icon" class="skill-icon">
+                    <p>CSS</p>
                 </div>
                 <div class="skill-item">
-                    <h3>CSS</h3>
-                    <p>Intermediate</p>
+                    <img src="icons/js.png" alt="JavaScript Icon" class="skill-icon">
+                    <p>JavaScript</p>
                 </div>
                 <div class="skill-item">
-                    <h3>Microsoft Office</h3>
-                    <p>Intermediate</p>
+                    <img src="icons/react.png" alt="MS Office Icon" class="skill-icon">
+                    <p>ReactJS</p>
+                </div>
+                <div class="skill-item">
+                    <img src="icons/mysql.png" alt="MS Office Icon" class="skill-icon">
+                    <p>MySQL</p>
+                </div>
+                <div class="skill-item">
+                    <img src="icons/github.png" alt="MS Office Icon" class="skill-icon">
+                    <p>GitHub</p>
+                </div>
+                <div class="skill-item">
+                    <img src="icons/netlify.png" alt="MS Office Icon" class="skill-icon">
+                    <p>Netlify</p>
+                </div>
+                <div class="skill-item">
+                    <img src="icons/ms.png" alt="MS Office Icon" class="skill-icon">
+                    <p>Microsoft Office</p>
                 </div>
             </div>
         </div>
     </section>
+    
 
 
 
@@ -113,16 +145,59 @@
             <div class="portfolio-content">
                 <div class="portfolio-item">
                     <h3>Quantum AI Model</h3>
-                    <p>Project features a Jupyter Notebook, `QuantumAiModel.ipynb`, that explores the integration of quantum computing with artificial intelligence. The notebook provides a comprehensive guide to setting up the environment, understanding quantum computing fundamentals, and implementing a quantum AI model. It includes detailed steps for data preparation.<a href="https://github.com/AjayJ07-git/QuantumModel" style="text-decoration: none;" target="_blank">▶️</a></p>
+                    <br>
+                    <p>The project's explores quantum-AI integration, covering environment setup, quantum fundamentals, model implementation, and data preparation in a comprehensive guide.</p>
+                    <br><a href="https://github.com/AjayJ07-git/QuantumModel" class="btn-primary">View in GitHub</a> 
                 </div>
                 <div class="portfolio-item">
                     <h3>YOLOv5 Image Object Detection </h3>
-                    <p>This project implements a YOLOv5-based image object detection model using a Jupyter Notebook. It provides a step-by-step guide to setting up the environment, preparing data, building and training the model, and analyzing results. The project aims to demonstrate the effectiveness of YOLOv5 in detecting objects in images efficiently.<a href="https://github.com/AjayJ07-git/YoloV5ObjectDetection" style="text-decoration: none;" target="_blank">▶️</a></p>
+                    <br><p>A Jupyter Notebook project implementing YOLOv5 for efficient image object detection, covering setup, data preparation, model training, and result analysis.</p>
+                    <br><a href="https://github.com/AjayJ07-git/YoloV5ObjectDetection" class="btn-primary">View in GitHub</a> 
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Technology in Civil Engineering (08.14 CGPA) </h3>
+                        <p>NIT, Trichy 2022 - Present</p>
+                    </div>
+                </div>
+                <div class="timeline-item right fade-in">
+                    <div class="timeline-content">
+                        <h3>Class XII  (94.20%) </h3>
+                        <p>Pushpalata Vidya Mandir 2021-22 </p>
+                    </div>
+                </div>
+                <div class="timeline-item left fade-in">
+                    <div class="timeline-content">
+                        <h3>Class XII  (83.60%) </h3>
+                        <p>Pushpalata Vidya Mandir 2019-20 </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-content">
+                <div class="experience-item">
+                    <h3>Research Intern (Natural language processing) </h3>
+                    <p>NIT Trichy (Onsite) Jun 2024 - Jul 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -134,8 +209,6 @@
             </div>
         </div>
     </section>
-
-
 
     <footer class="footer">
         <p>&copy; 2024 Ajay J. All rights reserved.</p>
