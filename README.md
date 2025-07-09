@@ -2,8 +2,6 @@
 
 A modern, responsive personal portfolio website showcasing the skills, projects, and experience of Ajay J, an ML Developer and BTech Civil Engineering student at NIT Trichy.
 
-![Portfolio Preview](profile_img.jpg)
-
 ## 🌟 Features
 
 - **Responsive Design**: Fully responsive layout that works on all devices
