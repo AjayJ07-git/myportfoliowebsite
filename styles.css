@@ -83,7 +83,15 @@ body.loading {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Hide particles in reduced motion mode */
+@media (prefers-reduced-motion: reduce) {
+    #particles-canvas {
+        display: none;
+    }
 }
 
 /* Variables for light and dark mode */
@@ -143,13 +151,19 @@ body.loading {
 
 .reveal-scale {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.9);
     transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .reveal-scale.revealed {
     opacity: 1;
     transform: scale(1);
+}
+
+/* Ensure section titles are visible by default after a delay */
+.section-title {
+    opacity: 1 !important;
+    transform: none !important;
 }
 
 /* Staggered animation for child elements */
@@ -634,6 +648,18 @@ body.loading {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Enhanced styling for different themes */
+[data-theme="light"] .skill-item {
+    background: rgba(255,255,255,0.8);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .skill-item {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255,255,255,0.1);
 }
 
 .skill-item::before {
@@ -719,6 +745,18 @@ body.loading {
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Enhanced styling for different themes */
+[data-theme="light"] .portfolio-item {
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .portfolio-item {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(255,255,255,0.1);
 }
 
 .portfolio-item::before {
@@ -762,24 +800,39 @@ body.loading {
     text-align: center;
     font-size: 2.8rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+/* Special gradient effect for section titles */
+.section-title.gradient-text {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    position: relative;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: 2px;
+/* Ensure section titles are visible in both themes */
+[data-theme="light"] .section-title {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .section-title {
+    color: var(--text-color);
 }
 
 /* Contact Section */
@@ -847,6 +900,18 @@ body.loading {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Enhanced styling for different themes */
+[data-theme="light"] .experience-item {
+    background: rgba(255,255,255,0.9);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+[data-theme="dark"] .experience-item {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(255,255,255,0.1);
 }
 
 .experience-item::before {
@@ -878,10 +943,47 @@ body.loading {
     font-weight: 600;
 }
 
+/* About section enhancements */
+.about {
+    padding: 80px 0;
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
 /* GitHub contributions enhancement */
 .github-contributions {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
+}
+
+.github-contributions h3 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
 .github-contributions img {
@@ -889,6 +991,7 @@ body.loading {
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--shadow);
     transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .github-contributions img:hover {

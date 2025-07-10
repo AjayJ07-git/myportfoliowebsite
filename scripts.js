@@ -128,19 +128,22 @@ function initScrollAnimations() {
     const timelineItems = document.querySelectorAll('.timeline-item');
     
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                
-                // Special handling for timeline items
-                if (entry.target.classList.contains('timeline-item')) {
-                    entry.target.classList.add('visible');
-                }
+                // Add a small delay for smoother animation
+                setTimeout(() => {
+                    entry.target.classList.add('revealed');
+                    
+                    // Special handling for timeline items
+                    if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.classList.add('visible');
+                    }
+                }, 100);
             }
         });
     }, observerOptions);
@@ -154,6 +157,15 @@ function initScrollAnimations() {
     timelineItems.forEach(item => {
         observer.observe(item);
     });
+    
+    // Ensure section titles are always visible after page load
+    setTimeout(() => {
+        const sectionTitles = document.querySelectorAll('.section-title');
+        sectionTitles.forEach(title => {
+            title.style.opacity = '1';
+            title.style.transform = 'none';
+        });
+    }, 2500);
 }
 
 // ==================== THEME MANAGEMENT ====================
