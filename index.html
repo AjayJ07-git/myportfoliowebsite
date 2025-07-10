@@ -62,8 +62,8 @@
                     <li class="nav-item"><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav__link" id="nav-portfolio">Works</a></li>
                     <li class="nav-item"><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
-                    <!-- Dropdown for More -->
-                    <li class="nav-item dropdown">
+                    <!-- Desktop Dropdown for More -->
+                    <li class="nav-item dropdown desktop-only">
                         <button class="dropdown-toggle" aria-label="More sections">
                             <span>More</span>
                             <i class='bx bx-chevron-down'></i>
@@ -73,6 +73,9 @@
                             <li><a href="#experience" class="nav__link">Experience</a></li>
                         </ul>
                     </li>
+                    <!-- Mobile Direct Links -->
+                    <li class="nav-item mobile-only"><a href="#education" class="nav__link" id="nav-education">Education</a></li>
+                    <li class="nav-item mobile-only"><a href="#experience" class="nav__link" id="nav-experience">Experience</a></li>
                 </ul>   
             </nav>
         </div>
@@ -129,57 +132,72 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title reveal-scale">Skills</h2>
-            <div class="skills-content stagger-parent">
-                <div class="skill-item stagger-child">
-                    <img src="icons/c++.png" alt="C++ Icon" class="skill-icon">
-                    <h3>C++</h3>
-                    <p>Programming Language</p>
+            <div class="carousel-container">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous skills">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <div class="skills-carousel">
+                    <div class="skills-content stagger-parent">
+                        <div class="skill-item stagger-child">
+                            <img src="icons/c++.png" alt="C++ Icon" class="skill-icon">
+                            <h3>C++</h3>
+                            <p>Programming Language</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/python.png" alt="Python Icon" class="skill-icon">
+                            <h3>Python</h3>
+                            <p>Programming Language</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/html.png" alt="HTML Icon" class="skill-icon">
+                            <h3>HTML</h3>
+                            <p>Markup Language</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/css.png" alt="CSS Icon" class="skill-icon">
+                            <h3>CSS</h3>
+                            <p>Styling Language</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/js.png" alt="JavaScript Icon" class="skill-icon">
+                            <h3>JavaScript</h3>
+                            <p>Programming Language</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/react.png" alt="ReactJS Icon" class="skill-icon">
+                            <h3>ReactJS</h3>
+                            <p>JavaScript Library</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/mysql.png" alt="MySQL Icon" class="skill-icon">
+                            <h3>MySQL</h3>
+                            <p>Database</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/github.png" alt="GitHub Icon" class="skill-icon">
+                            <h3>GitHub</h3>
+                            <p>Version Control</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/netlify.png" alt="Netlify Icon" class="skill-icon">
+                            <h3>Netlify</h3>
+                            <p>Deployment Platform</p>
+                        </div>
+                        <div class="skill-item stagger-child">
+                            <img src="icons/ms.png" alt="MS Office Icon" class="skill-icon">
+                            <h3>Microsoft Office</h3>
+                            <p>Productivity Suite</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/python.png" alt="Python Icon" class="skill-icon">
-                    <h3>Python</h3>
-                    <p>Programming Language</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/html.png" alt="HTML Icon" class="skill-icon">
-                    <h3>HTML</h3>
-                    <p>Markup Language</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/css.png" alt="CSS Icon" class="skill-icon">
-                    <h3>CSS</h3>
-                    <p>Styling Language</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/js.png" alt="JavaScript Icon" class="skill-icon">
-                    <h3>JavaScript</h3>
-                    <p>Programming Language</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/react.png" alt="ReactJS Icon" class="skill-icon">
-                    <h3>ReactJS</h3>
-                    <p>JavaScript Library</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/mysql.png" alt="MySQL Icon" class="skill-icon">
-                    <h3>MySQL</h3>
-                    <p>Database</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/github.png" alt="GitHub Icon" class="skill-icon">
-                    <h3>GitHub</h3>
-                    <p>Version Control</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/netlify.png" alt="Netlify Icon" class="skill-icon">
-                    <h3>Netlify</h3>
-                    <p>Deployment Platform</p>
-                </div>
-                <div class="skill-item stagger-child">
-                    <img src="icons/ms.png" alt="MS Office Icon" class="skill-icon">
-                    <h3>Microsoft Office</h3>
-                    <p>Productivity Suite</p>
-                </div>
+                <button class="carousel-btn carousel-btn-next" aria-label="Next skills">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
             </div>
         </div>
     </section>
@@ -235,11 +253,34 @@
     <section id="experience" class="experience">
         <div class="container">
             <h2 class="section-title reveal-scale">Experience</h2>
-            <div class="experience-content">
-                <div class="experience-item reveal">
-                    <h3>Research Intern (Natural language processing) </h3>
-                    <p>NIT Trichy (Onsite) Jun 2024 - Jul 2024</p>
+            <div class="carousel-container">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous experience">
+                    <i class='bx bx-chevron-left'></i>
+                </button>
+                <div class="experience-carousel">
+                    <div class="experience-content">
+                        <div class="experience-item reveal">
+                            <h3>Research Intern (Natural language processing) </h3>
+                            <p>NIT Trichy (Onsite) Jun 2024 - Jul 2024</p>
+                        </div>
+                        <div class="experience-item reveal">
+                            <h3>Web Development Intern</h3>
+                            <p>Tech Solutions Ltd. | Remote | Mar 2024 - May 2024</p>
+                        </div>
+                        <div class="experience-item reveal">
+                            <h3>Data Science Intern</h3>
+                            <p>Innovation Labs | Hybrid | Jan 2024 - Feb 2024</p>
+                        </div>
+                    </div>
                 </div>
+                <button class="carousel-btn carousel-btn-next" aria-label="Next experience">
+                    <i class='bx bx-chevron-right'></i>
+                </button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
             </div>
         </div>
     </section>
