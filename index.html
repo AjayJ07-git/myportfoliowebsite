@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajay J</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#3b82f6">
+    <title>Ajay J - ML Developer & AI Enthusiast</title>
+    <meta name="description" content="Portfolio of Ajay J - ML Developer, AI Enthusiast, and Web Developer. Showcasing projects in Machine Learning, AI, and modern web development.">
+    <meta name="keywords" content="Ajay J, ML Developer, AI Developer, Machine Learning, Web Developer, Portfolio, NIT Trichy">
     <link rel="icon" href="avataaars.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet">
@@ -28,22 +34,40 @@
     <!-- Header with Light/Dark Mode Toggle -->
     <header class="header" id="header">
         <div class="container">
-            <nav>
-                <ul class="nav-menu">
+            <nav class="navbar">
+                <!-- Logo/Brand -->
+                <div class="nav-brand">
+                    <a href="#home" class="brand-link">Ajay J</a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
                     <!-- Theme Switch with Icons -->
-                    <div class="theme-switch-wrapper">
-                        <!-- Sun and Moon icons for light and dark mode -->
-                        <i class='bx bx-sun' id="light-icon" style="cursor: pointer;"></i>
-                        <i class='bx bx-moon' id="dark-icon" style="cursor: pointer;"></i>
-                    </div>
-                    <li><a href="#home" class="nav__link" id="nav-home">Home</a></li>
-                    <li><a href="#about" class="nav__link" id="nav-about">About</a></li>
-                    <li><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
-                    <li><a href="#portfolio" class="nav__link" id="nav-portfolio">Works</a></li>
-                    <li><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
+                    <li class="nav-item theme-item">
+                        <div class="theme-switch-wrapper">
+                            <!-- Sun and Moon icons for light and dark mode -->
+                            <i class='bx bx-sun' id="light-icon" style="cursor: pointer;"></i>
+                            <i class='bx bx-moon' id="dark-icon" style="cursor: pointer;"></i>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#home" class="nav__link" id="nav-home">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav__link" id="nav-about">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav__link" id="nav-portfolio">Works</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
                     <!-- Dropdown for More -->
-                    <li class="dropdown">
-                        <p style="font-size: 24px;">≡</p>
+                    <li class="nav-item dropdown">
+                        <button class="dropdown-toggle" aria-label="More sections">
+                            <span>More</span>
+                            <i class='bx bx-chevron-down'></i>
+                        </button>
                         <ul class="dropdown-menu">
                             <li><a href="#education" class="nav__link">Education</a></li>
                             <li><a href="#experience" class="nav__link">Experience</a></li>
