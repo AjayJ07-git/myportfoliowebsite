@@ -717,11 +717,78 @@ body.loading {
     z-index: -1;
 }
 
-.skills-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 25px;
+/* Skills Slider Wrapper */
+.skills-slider-wrapper {
+    position: relative;
     margin-top: 40px;
+}
+
+.skills-slider {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.skills-content {
+    display: flex;
+    gap: 25px;
+    transition: transform 0.5s ease;
+    width: max-content;
+}
+
+.skills-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.skills-nav-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.skills-prev-btn {
+    left: -25px;
+}
+
+.skills-next-btn {
+    right: -25px;
+}
+
+.skills-nav-btn i {
+    font-size: 24px;
+}
+
+/* Hide navigation buttons on larger screens */
+@media screen and (min-width: 1200px) {
+    .skills-nav-btn {
+        display: none;
+    }
+    
+    .skills-slider {
+        overflow: visible;
+    }
+    
+    .skills-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        width: auto;
+    }
 }
 
 .skill-item {
@@ -735,6 +802,13 @@ body.loading {
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    width: 180px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Enhanced styling for different themes */
@@ -815,11 +889,78 @@ body.loading {
     z-index: -1;
 }
 
-.portfolio-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+/* Portfolio Slider Wrapper */
+.portfolio-slider-wrapper {
+    position: relative;
     margin-top: 40px;
+}
+
+.portfolio-slider {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.portfolio-content {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s ease;
+    width: max-content;
+}
+
+.portfolio-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.portfolio-nav-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.portfolio-prev-btn {
+    left: -25px;
+}
+
+.portfolio-next-btn {
+    right: -25px;
+}
+
+.portfolio-nav-btn i {
+    font-size: 24px;
+}
+
+/* Hide navigation buttons on larger screens */
+@media screen and (min-width: 1000px) {
+    .portfolio-nav-btn {
+        display: none;
+    }
+    
+    .portfolio-slider {
+        overflow: visible;
+    }
+    
+    .portfolio-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        width: auto;
+    }
 }
 
 .portfolio-item {
@@ -832,6 +973,9 @@ body.loading {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    width: 320px;
+    min-height: 280px;
 }
 
 /* Enhanced styling for different themes */
@@ -1023,10 +1167,75 @@ body.loading {
     border-color: var(--secondary-color);
 }
 
+/* Enhanced Experience Item Styling */
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
 .experience-item h3 {
     color: var(--secondary-color);
-    margin-bottom: 10px;
+    margin: 0;
     font-weight: 600;
+    font-size: 1.3rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.experience-duration {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.experience-company {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.experience-description {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.experience-description li {
+    color: var(--text-color);
+    opacity: 0.9;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.experience-description li:before {
+    content: '▸';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Responsive adjustments for experience */
+@media screen and (max-width: 600px) {
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .experience-duration {
+        align-self: flex-start;
+    }
 }
 
 /* About section enhancements */
@@ -1057,6 +1266,8 @@ body.loading {
     line-height: 1.8;
     color: var(--text-color);
     opacity: 0.9;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 /* GitHub contributions enhancement */
@@ -1067,9 +1278,20 @@ body.loading {
 
 .github-contributions h3 {
     color: var(--text-color);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 30px;
     font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .github-contributions h3 {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="light"] .github-contributions h3 {
+    color: #2d3748;
 }
 
 .github-contributions img {
@@ -1099,13 +1321,21 @@ body.loading {
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     position: relative;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(15px);
     border-radius: 50px;
-    padding: 8px;
-    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.theme-switch-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border-color: rgba(255,255,255,0.3);
 }
 
 #light-icon, #dark-icon {

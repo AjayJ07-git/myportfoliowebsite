@@ -14,6 +14,8 @@ function initializeApp() {
     initTypingAnimation();
     initHeaderScroll();
     initDropdown();
+    initSkillsSlider();
+    initPortfolioSlider();
 }
 
 // ==================== PAGE LOADER ====================
@@ -365,6 +367,8 @@ function initTypingAnimation() {
     
     const changingRoleElement = document.getElementById('changing-role');
     
+    if (!changingRoleElement) return;
+    
     function typeRole() {
         const currentRole = roles[roleIndex];
         
@@ -376,7 +380,7 @@ function initTypingAnimation() {
         }
         
         if (isDeleting) {
-            // Deleting characters
+            // Deleting characters with improved animation
             changingRoleElement.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
             
@@ -385,7 +389,7 @@ function initTypingAnimation() {
                 roleIndex = (roleIndex + 1) % roles.length;
             }
         } else {
-            // Typing characters
+            // Typing characters with improved animation
             changingRoleElement.textContent = currentRole.substring(0, charIndex + 1);
             charIndex++;
             
@@ -394,12 +398,22 @@ function initTypingAnimation() {
             }
         }
         
-        // Variable typing speed
-        const typingSpeed = isDeleting ? 50 : 100;
-        const waitingSpeed = isWaiting ? 2000 : typingSpeed;
+        // Enhanced typing speed with more natural feel
+        let typingSpeed;
+        if (isWaiting) {
+            typingSpeed = 2000;
+        } else if (isDeleting) {
+            typingSpeed = 30 + Math.random() * 20; // Faster deletion with slight variation
+        } else {
+            typingSpeed = 80 + Math.random() * 40; // Natural typing variation
+        }
         
-        setTimeout(typeRole, waitingSpeed);
+        setTimeout(typeRole, typingSpeed);
     }
+    
+    // Add cursor blinking effect
+    changingRoleElement.style.borderRight = '2px solid var(--primary-color)';
+    changingRoleElement.style.animation = 'blink 1s infinite';
     
     // Start typing animation
     setTimeout(typeRole, 1000);
@@ -660,6 +674,215 @@ window.addEventListener('error', function(e) {
         document.querySelector('.nav__link').classList.add('active');
     }
 });
+
+// ==================== SKILLS SLIDER ====================
+function initSkillsSlider() {
+    const skillsSlider = document.getElementById('skillsSlider');
+    const skillsContent = skillsSlider?.querySelector('.skills-content');
+    const prevBtn = document.getElementById('skillsPrevBtn');
+    const nextBtn = document.getElementById('skillsNextBtn');
+    
+    if (!skillsSlider || !skillsContent || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    const skillItems = skillsContent.querySelectorAll('.skill-item');
+    
+    // Calculate items per view based on screen size
+    function getItemsPerView() {
+        const width = window.innerWidth;
+        if (width >= 1200) return skillItems.length; // Show all on large screens
+        if (width >= 768) return 3;
+        if (width >= 480) return 2;
+        return 1;
+    }
+    
+    function getItemWidth() {
+        return skillItems[0]?.offsetWidth + 25 || 180; // item width + gap
+    }
+    
+    function updateSlider() {
+        const itemsPerView = getItemsPerView();
+        const itemWidth = getItemWidth();
+        const maxIndex = Math.max(0, skillItems.length - itemsPerView);
+        
+        // Ensure currentIndex is within bounds
+        currentIndex = Math.min(currentIndex, maxIndex);
+        
+        const translateX = -currentIndex * itemWidth;
+        skillsContent.style.transform = `translateX(${translateX}px)`;
+        
+        // Update button states
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const itemsPerView = getItemsPerView();
+        const maxIndex = Math.max(0, skillItems.length - itemsPerView);
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+    
+    // Auto-scroll functionality
+    let autoScrollInterval;
+    
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            const itemsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, skillItems.length - itemsPerView);
+            
+            if (currentIndex >= maxIndex) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+            updateSlider();
+        }, 3000);
+    }
+    
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+    
+    // Start auto-scroll only on smaller screens
+    function handleAutoScroll() {
+        if (getItemsPerView() < skillItems.length) {
+            startAutoScroll();
+        } else {
+            stopAutoScroll();
+        }
+    }
+    
+    // Pause auto-scroll on hover
+    skillsSlider.addEventListener('mouseenter', stopAutoScroll);
+    skillsSlider.addEventListener('mouseleave', handleAutoScroll);
+    
+    // Window resize handler
+    window.addEventListener('resize', () => {
+        updateSlider();
+        handleAutoScroll();
+    });
+    
+    // Initial setup
+    updateSlider();
+    handleAutoScroll();
+}
+
+// ==================== PORTFOLIO SLIDER ====================
+function initPortfolioSlider() {
+    const portfolioSlider = document.getElementById('portfolioSlider');
+    const portfolioContent = portfolioSlider?.querySelector('.portfolio-content');
+    const prevBtn = document.getElementById('portfolioPrevBtn');
+    const nextBtn = document.getElementById('portfolioNextBtn');
+    
+    if (!portfolioSlider || !portfolioContent || !prevBtn || !nextBtn) return;
+    
+    let currentIndex = 0;
+    const portfolioItems = portfolioContent.querySelectorAll('.portfolio-item');
+    
+    // Calculate items per view based on screen size
+    function getItemsPerView() {
+        const width = window.innerWidth;
+        if (width >= 1000) return portfolioItems.length; // Show all on large screens
+        if (width >= 600) return 2;
+        return 1;
+    }
+    
+    function getItemWidth() {
+        return portfolioItems[0]?.offsetWidth + 30 || 320; // item width + gap
+    }
+    
+    function updateSlider() {
+        const itemsPerView = getItemsPerView();
+        const itemWidth = getItemWidth();
+        const maxIndex = Math.max(0, portfolioItems.length - itemsPerView);
+        
+        // Ensure currentIndex is within bounds
+        currentIndex = Math.min(currentIndex, maxIndex);
+        
+        const translateX = -currentIndex * itemWidth;
+        portfolioContent.style.transform = `translateX(${translateX}px)`;
+        
+        // Update button states
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const itemsPerView = getItemsPerView();
+        const maxIndex = Math.max(0, portfolioItems.length - itemsPerView);
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateSlider();
+        }
+    });
+    
+    // Auto-scroll functionality
+    let autoScrollInterval;
+    
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            const itemsPerView = getItemsPerView();
+            const maxIndex = Math.max(0, portfolioItems.length - itemsPerView);
+            
+            if (currentIndex >= maxIndex) {
+                currentIndex = 0;
+            } else {
+                currentIndex++;
+            }
+            updateSlider();
+        }, 4000);
+    }
+    
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+    
+    // Start auto-scroll only on smaller screens
+    function handleAutoScroll() {
+        if (getItemsPerView() < portfolioItems.length) {
+            startAutoScroll();
+        } else {
+            stopAutoScroll();
+        }
+    }
+    
+    // Pause auto-scroll on hover
+    portfolioSlider.addEventListener('mouseenter', stopAutoScroll);
+    portfolioSlider.addEventListener('mouseleave', handleAutoScroll);
+    
+    // Window resize handler
+    window.addEventListener('resize', () => {
+        updateSlider();
+        handleAutoScroll();
+    });
+    
+    // Initial setup
+    updateSlider();
+    handleAutoScroll();
+}
 
 // ==================== CONSOLE WELCOME MESSAGE ====================
 console.log(`
