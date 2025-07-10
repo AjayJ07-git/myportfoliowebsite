@@ -125,6 +125,8 @@ body.loading {
 .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+    display: flex;
+    justify-content: center;
 }
 
 .reveal-left {
