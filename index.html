@@ -62,8 +62,8 @@
                     <li class="nav-item"><a href="#skills" class="nav__link" id="nav-skills">Skills</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav__link" id="nav-portfolio">Works</a></li>
                     <li class="nav-item"><a href="#contact" class="nav__link" id="nav-contact">Contact</a></li>
-                    <!-- Dropdown for More -->
-                    <li class="nav-item dropdown">
+                    <!-- Desktop only - Dropdown for More -->
+                    <li class="nav-item dropdown desktop-only">
                         <button class="dropdown-toggle" aria-label="More sections">
                             <span>More</span>
                             <i class='bx bx-chevron-down'></i>
@@ -73,6 +73,9 @@
                             <li><a href="#experience" class="nav__link">Experience</a></li>
                         </ul>
                     </li>
+                    <!-- Mobile only - Direct links -->
+                    <li class="nav-item mobile-only"><a href="#education" class="nav__link">Education</a></li>
+                    <li class="nav-item mobile-only"><a href="#experience" class="nav__link">Experience</a></li>
                 </ul>   
             </nav>
         </div>
@@ -84,7 +87,7 @@
             <div class="homeplusimage">
                 <div class="home-content reveal-left">
                     <h1>Hi, I'm <span class="highlight">Ajay J</span></h1>
-                    <h1>a <span id="changing-role">ML Developer</span></h1>
+                    <h1><span class="role-prefix">a</span> <span id="changing-role">ML Developer</span></h1>
                     <p>Weaving Intelligence Into The Web: Where AI Meets Modern Development</p>
                     <div>
                         <a href="#contact" class="btn-primary">Contact Me</a>  

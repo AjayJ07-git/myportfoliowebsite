@@ -749,7 +749,7 @@ function initSkillsSlider() {
                 currentIndex++;
             }
             updateSlider();
-        }, 3000);
+        }, 5000);
     }
     
     function stopAutoScroll() {
@@ -853,7 +853,7 @@ function initPortfolioSlider() {
                 currentIndex++;
             }
             updateSlider();
-        }, 4000);
+        }, 6000);
     }
     
     function stopAutoScroll() {
