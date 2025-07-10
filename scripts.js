@@ -14,6 +14,7 @@ function initializeApp() {
     initTypingAnimation();
     initHeaderScroll();
     initDropdown();
+    initCarousels();
 }
 
 // ==================== PAGE LOADER ====================
@@ -660,6 +661,150 @@ window.addEventListener('error', function(e) {
         document.querySelector('.nav__link').classList.add('active');
     }
 });
+
+// ==================== CAROUSEL FUNCTIONALITY ====================
+function initCarousels() {
+    initSkillsCarousel();
+    initExperienceCarousel();
+}
+
+function initSkillsCarousel() {
+    const skillsContent = document.querySelector('.skills-content');
+    const prevBtn = document.querySelector('.skills .carousel-btn-prev');
+    const nextBtn = document.querySelector('.skills .carousel-btn-next');
+    const dots = document.querySelectorAll('.skills .dot');
+    const skillItems = document.querySelectorAll('.skill-item');
+    
+    if (!skillsContent || !prevBtn || !nextBtn || skillItems.length === 0) return;
+    
+    let currentSlide = 0;
+    const itemsPerSlide = window.innerWidth <= 768 ? 2 : window.innerWidth <= 1024 ? 3 : 4;
+    const maxSlides = Math.ceil(skillItems.length / itemsPerSlide);
+    
+    function updateCarousel() {
+        const translateX = -currentSlide * (100 / maxSlides);
+        skillsContent.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % maxSlides;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + maxSlides) % maxSlides;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+    
+    // Auto-scroll
+    let autoScrollInterval = setInterval(nextSlide, 4000);
+    
+    // Pause auto-scroll on hover
+    const skillsSection = document.querySelector('.skills');
+    skillsSection.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
+    
+    skillsSection.addEventListener('mouseleave', () => {
+        autoScrollInterval = setInterval(nextSlide, 4000);
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const newItemsPerSlide = window.innerWidth <= 768 ? 2 : window.innerWidth <= 1024 ? 3 : 4;
+        if (newItemsPerSlide !== itemsPerSlide) {
+            location.reload(); // Simple solution for responsive carousel
+        }
+    });
+    
+    // Initialize
+    updateCarousel();
+}
+
+function initExperienceCarousel() {
+    const experienceContent = document.querySelector('.experience-content');
+    const prevBtn = document.querySelector('.experience .carousel-btn-prev');
+    const nextBtn = document.querySelector('.experience .carousel-btn-next');
+    const dots = document.querySelectorAll('.experience .dot');
+    const experienceItems = document.querySelectorAll('.experience-item');
+    
+    if (!experienceContent || !prevBtn || !nextBtn || experienceItems.length === 0) return;
+    
+    let currentSlide = 0;
+    const itemsPerSlide = window.innerWidth <= 768 ? 1 : 2;
+    const maxSlides = Math.ceil(experienceItems.length / itemsPerSlide);
+    
+    function updateCarousel() {
+        const translateX = -currentSlide * (100 / maxSlides);
+        experienceContent.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % maxSlides;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + maxSlides) % maxSlides;
+        updateCarousel();
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+    
+    // Auto-scroll
+    let autoScrollInterval = setInterval(nextSlide, 5000);
+    
+    // Pause auto-scroll on hover
+    const experienceSection = document.querySelector('.experience');
+    experienceSection.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
+    
+    experienceSection.addEventListener('mouseleave', () => {
+        autoScrollInterval = setInterval(nextSlide, 5000);
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const newItemsPerSlide = window.innerWidth <= 768 ? 1 : 2;
+        if (newItemsPerSlide !== itemsPerSlide) {
+            location.reload(); // Simple solution for responsive carousel
+        }
+    });
+    
+    // Initialize
+    updateCarousel();
+}
 
 // ==================== CONSOLE WELCOME MESSAGE ====================
 console.log(`
